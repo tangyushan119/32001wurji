@@ -1,34 +1,26 @@
 <template>
   <div class="layout-container">
-    <aside class="sidebar" :class="{ 'collapsed': isCollapsed }">
-      <div class="sidebar-logo">
+    <header class="header">
+      <div class="header-left">
         <span class="logo-icon">
           <Place />
         </span>
-        <span v-if="!isCollapsed" class="logo-text">无人机管理系统</span>
+        <span class="logo-text">无人机管理系统</span>
       </div>
-      <div class="sidebar-menu">
+      <div class="top-menu">
         <el-menu
-          :default-active="activeMenu"
-          :collapse="isCollapsed"
-          background-color="#001529"
-          text-color="#bfcbd9"
+          :active-index="activeTopMenu"
+          mode="horizontal"
+          background-color="#fff"
+          text-color="#666"
           active-text-color="#409eff"
+          @select="handleTopMenuSelect"
         >
-          <el-menu-item index="/dashboard">
-            <component :is="HomeFilled" />
-            <span>首页</span>
+          <el-menu-item v-for="item in topMenuList" :key="item.key" :index="item.key">
+            <component :is="item.icon" />
+            <span>{{ item.label }}</span>
           </el-menu-item>
         </el-menu>
-      </div>
-      <div class="sidebar-toggle" @click="isCollapsed = !isCollapsed">
-        <component :is="isCollapsed ? Expand : Fold" />
-      </div>
-    </aside>
-    <header class="header">
-      <div class="header-left">
-        <component :is="Menu" @click="toggleSidebar" class="menu-btn" />
-        <span class="header-title">{{ currentPageTitle }}</span>
       </div>
       <div class="header-right">
         <el-dropdown trigger="click">
@@ -46,32 +38,104 @@
         </el-dropdown>
       </div>
     </header>
-    <main class="main">
-      <router-view />
-    </main>
+    <div class="main-content">
+      <aside class="sidebar">
+        <div class="sidebar-menu">
+          <el-menu
+            :default-active="activeMenu"
+            background-color="#001529"
+            text-color="#bfcbd9"
+            active-text-color="#409eff"
+            @select="handleSidebarSelect"
+          >
+            <el-menu-item v-for="item in currentSecondMenu" :key="item.path" :index="item.path">
+              <component :is="item.icon" />
+              <span>{{ item.title }}</span>
+            </el-menu-item>
+          </el-menu>
+        </div>
+      </aside>
+      <main class="content">
+        <router-view />
+      </main>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Place, HomeFilled, Menu, Expand, Fold, User, ArrowDown } from '@element-plus/icons-vue'
+import {
+  Place, User, ArrowDown, HomeFilled, Monitor, Plus, List, Edit,
+  Clock, Document, TrendCharts, UserFilled, Setting
+} from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
 
 const route = useRoute()
 const router = useRouter()
 const userStore = useUserStore()
-const isCollapsed = ref(false)
+
+const iconMap: Record<string, any> = {
+  HomeFilled,
+  Monitor,
+  Plus,
+  List,
+  Edit,
+  Clock,
+  Document,
+  TrendCharts,
+  User,
+  UserFilled,
+  Setting
+}
+
+const topMenuList = [
+  { key: 'dashboard', label: '首页', icon: HomeFilled },
+  { key: 'device', label: '设备管理', icon: Monitor },
+  { key: 'task', label: '任务管理', icon: List },
+  { key: 'analytics', label: '数据分析', icon: TrendCharts },
+  { key: 'system', label: '系统管理', icon: Setting }
+]
+
+const activeTopMenu = ref('dashboard')
 
 const activeMenu = computed(() => route.path)
 
-const currentPageTitle = computed(() => {
-  return route.meta.title || '首页'
+const currentSecondMenu = computed(() => {
+  const layoutRoute = route.matched.find(r => r.name === 'Layout')
+  if (!layoutRoute?.children) return []
+  
+  return layoutRoute.children
+    .filter(child => {
+      const topMenuKey = (child.meta as any)?.topMenuKey
+      return topMenuKey === activeTopMenu.value
+    })
+    .map(child => ({
+      path: '/' + child.path,
+      title: (child.meta as any)?.title || '',
+      icon: iconMap[(child.meta as any)?.icon] || List
+    }))
 })
 
-const toggleSidebar = () => {
-  isCollapsed.value = !isCollapsed.value
+const handleTopMenuSelect = (key: string) => {
+  activeTopMenu.value = key
+  
+  const layoutRoute = route.matched.find(r => r.name === 'Layout')
+  if (!layoutRoute?.children) return
+  
+  const defaultChild = layoutRoute.children.find(child => {
+    const topMenuKey = (child.meta as any)?.topMenuKey
+    return topMenuKey === key
+  })
+  
+  if (defaultChild) {
+    router.push('/' + defaultChild.path)
+  }
+}
+
+const handleSidebarSelect = (index: string) => {
+  router.push(index)
 }
 
 const handleLogout = () => {
@@ -79,36 +143,38 @@ const handleLogout = () => {
   ElMessage.success('退出成功')
   router.push('/login')
 }
+
+watch(() => route.path, () => {
+  const meta = (route.meta as any)
+  if (meta?.topMenuKey) {
+    activeTopMenu.value = meta.topMenuKey
+  }
+}, { immediate: true })
 </script>
 
 <style lang="scss" scoped>
 .layout-container {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   overflow: hidden;
 }
 
-.sidebar {
-  width: 220px;
-  background-color: #001529;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  transition: width 0.3s ease;
-  position: relative;
-
-  &.collapsed {
-    width: 64px;
-  }
-}
-
-.sidebar-logo {
+.header {
   height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-  border-bottom: 1px solid #001529;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  flex-shrink: 0;
 }
 
 .logo-icon {
@@ -120,62 +186,21 @@ const handleLogout = () => {
   margin-left: 12px;
   font-size: 16px;
   font-weight: bold;
-}
-
-.sidebar-menu {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.sidebar-toggle {
-  position: absolute;
-  right: -12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-color: #1890ff;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.header {
-  height: 60px;
-  background-color: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  flex-shrink: 0;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.menu-btn {
-  font-size: 20px;
-  margin-right: 16px;
-  cursor: pointer;
-  color: #666;
-}
-
-.header-title {
-  font-size: 16px;
-  font-weight: 600;
   color: #333;
+}
+
+.top-menu {
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .header-right {
   display: flex;
   align-items: center;
+  width: 150px;
+  justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .user-info {
@@ -189,7 +214,27 @@ const handleLogout = () => {
   margin-left: 8px;
 }
 
-.main {
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #001529;
+  color: #fff;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-menu {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.content {
   flex: 1;
   overflow-y: auto;
   background-color: #f5f7fa;
