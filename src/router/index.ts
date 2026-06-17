@@ -133,6 +133,26 @@ const routes: RouteRecordRaw[] = [
           topMenuKey: 'personnel',
           icon: 'Setting'
         }
+      },
+      {
+        path: 'pilot/list',
+        name: 'PilotList',
+        component: () => import('@/views/pilot/list.vue'),
+        meta: {
+          title: '飞手人员',
+          topMenuKey: 'personnel',
+          icon: 'User'
+        }
+      },
+      {
+        path: 'pilot/add',
+        name: 'PilotAdd',
+        component: () => import('@/views/pilot/add.vue'),
+        meta: {
+          title: '新增/编辑飞手',
+          topMenuKey: 'personnel',
+          icon: 'Plus'
+        }
       }
     ]
   },
