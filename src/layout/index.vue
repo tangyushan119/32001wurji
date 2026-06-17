@@ -34,16 +34,13 @@
             @select="handleSidebarSelect"
           >
             <el-menu-item key="/dashboard" index="/dashboard">
-              <component :is="HomeFilled" />
               <span>首页</span>
             </el-menu-item>
             <el-sub-menu v-for="category in menuCategories" :key="category.key" :index="category.key">
               <template #title>
-                <component :is="category.icon" />
                 <span>{{ category.label }}</span>
               </template>
               <el-menu-item v-for="item in getCategoryMenuItems(category.key)" :key="item.path" :index="item.path">
-                <component :is="item.icon" />
                 <span>{{ item.title }}</span>
               </el-menu-item>
             </el-sub-menu>
@@ -60,10 +57,7 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import {
-  Place, User, ArrowDown, HomeFilled, Monitor, Plus, List, Edit,
-  Clock, Document, TrendCharts, UserFilled, Setting
-} from '@element-plus/icons-vue'
+import { Place, User, ArrowDown } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
 
@@ -71,24 +65,10 @@ const route = useRoute()
 const router = useRouter()
 const userStore = useUserStore()
 
-const iconMap: Record<string, any> = {
-  HomeFilled,
-  Monitor,
-  Plus,
-  List,
-  Edit,
-  Clock,
-  Document,
-  TrendCharts,
-  User,
-  UserFilled,
-  Setting
-}
-
 const menuCategories = [
-  { key: 'drone', label: '无人机管理', icon: Monitor },
-  { key: 'task', label: '任务分派', icon: List },
-  { key: 'personnel', label: '人员管理', icon: UserFilled }
+  { key: 'drone', label: '无人机管理' },
+  { key: 'task', label: '任务分派' },
+  { key: 'personnel', label: '人员管理' }
 ]
 
 const activeMenu = computed(() => route.path)
@@ -104,8 +84,7 @@ const getCategoryMenuItems = (categoryKey: string) => {
     })
     .map(child => ({
       path: '/' + child.path,
-      title: (child.meta as any)?.title || '',
-      icon: iconMap[(child.meta as any)?.icon] || List
+      title: (child.meta as any)?.title || ''
     }))
 }
 
@@ -199,17 +178,27 @@ watch(() => route.path, () => {}, { immediate: true })
 }
 
 .sidebar-menu :deep(.el-menu-item) {
-  height: 56px;
-  line-height: 56px;
-  padding-left: 20px;
+  --el-menu-icon-width: 0;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 24px;
 }
 
-.sidebar-menu :deep(.el-menu-item span) {
-  font-size: 14px;
+.sidebar-menu :deep(.el-sub-menu__title) {
+  --el-menu-icon-width: 0;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 24px;
+}
+
+.sidebar-menu :deep(.el-menu-item span),
+.sidebar-menu :deep(.el-sub-menu__title span) {
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
 .sidebar-menu :deep(.el-sub-menu .el-menu-item) {
-  padding-left: 50px;
+  padding-left: 48px;
 }
 
 .content {

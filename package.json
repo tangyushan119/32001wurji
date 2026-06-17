@@ -8,21 +8,27 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "build:test": "vue-tsc && vite build --mode test",
-    "build:prod": "vue-tsc && vite build --mode production"
+    "build:prod": "vue-tsc && vite build --mode production",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
-    "pinia": "^2.1.7",
+    "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.7",
     "element-plus": "^2.6.1",
-    "@element-plus/icons-vue": "^2.3.1"
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/test-utils": "^2.4.11",
+    "jsdom": "^22.1.0",
+    "sass": "^1.71.0",
     "typescript": "^5.4.2",
     "vite": "^5.2.0",
-    "vue-tsc": "^2.0.6",
-    "sass": "^1.71.0"
+    "vitest": "^3.2.2",
+    "vue-tsc": "^2.0.6"
   }
 }
