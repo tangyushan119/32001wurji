@@ -49,7 +49,6 @@
             @select="handleSidebarSelect"
           >
             <el-menu-item v-for="item in currentSecondMenu" :key="item.path" :index="item.path">
-              <component :is="item.icon" />
               <span>{{ item.title }}</span>
             </el-menu-item>
           </el-menu>
@@ -235,18 +234,14 @@ watch(() => route.path, () => {
 }
 
 .sidebar-menu :deep(.el-menu-item) {
-  --el-menu-icon-width: 18px;
-}
-
-.sidebar-menu :deep(.el-menu-item [class^="el-icon"]) {
-  font-size: 14px;
-  margin-right: 8px;
-  width: 18px;
-  text-align: center;
+  --el-menu-icon-width: 0;
+  height: 56px;
+  line-height: 56px;
+  padding-left: 32px;
 }
 
 .sidebar-menu :deep(.el-menu-item span) {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .content {
