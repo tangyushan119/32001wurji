@@ -234,6 +234,21 @@ watch(() => route.path, () => {
   overflow-y: auto;
 }
 
+.sidebar-menu :deep(.el-menu-item) {
+  --el-menu-icon-width: 18px;
+}
+
+.sidebar-menu :deep(.el-menu-item [class^="el-icon"]) {
+  font-size: 14px;
+  margin-right: 8px;
+  width: 18px;
+  text-align: center;
+}
+
+.sidebar-menu :deep(.el-menu-item span) {
+  font-size: 14px;
+}
+
 .content {
   flex: 1;
   overflow-y: auto;
