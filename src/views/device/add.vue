@@ -2,7 +2,10 @@
   <div class="page-container">
     <el-card>
       <template #header>
-        <span>添加设备</span>
+        <div class="card-header">
+          <span>添加设备</span>
+          <el-button @click="handleBack">返回列表</el-button>
+        </div>
       </template>
       <el-form
         ref="formRef"
@@ -18,6 +21,7 @@
             <el-option label="航拍无人机" value="航拍无人机" />
             <el-option label="测绘无人机" value="测绘无人机" />
             <el-option label="巡检无人机" value="巡检无人机" />
+            <el-option label="农业植保" value="农业植保" />
           </el-select>
         </el-form-item>
         <el-form-item label="所在位置" prop="location">
@@ -25,7 +29,8 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="handleSubmit">提交</el-button>
-          <el-button @click="handleReset">取消</el-button>
+          <el-button @click="handleReset">重置</el-button>
+          <el-button @click="handleBack">取消</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -36,6 +41,11 @@
 import { ref, reactive } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+import { useDeviceStore } from '@/stores/device'
+
+const router = useRouter()
+const deviceStore = useDeviceStore()
 
 const formRef = ref<FormInstance>()
 
@@ -63,7 +73,15 @@ const handleSubmit = async () => {
   if (!formRef.value) return
   const valid = await formRef.value.validate()
   if (!valid) return
-  ElMessage.success('设备添加成功')
+  
+  deviceStore.addDevice({
+    name: formData.name,
+    type: formData.type,
+    location: formData.location,
+    status: '离线'
+  })
+  
+  ElMessage.success('设备添加成功，已自动同步到列表')
   handleReset()
 }
 
@@ -73,10 +91,20 @@ const handleReset = () => {
   formData.location = ''
   formRef.value?.resetFields()
 }
+
+const handleBack = () => {
+  router.push('/drone/list')
+}
 </script>
 
 <style lang="scss" scoped>
 .page-container {
   min-height: 100%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
