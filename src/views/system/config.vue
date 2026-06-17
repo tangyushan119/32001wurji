@@ -4,22 +4,27 @@
       <template #header>
         <span>系统配置</span>
       </template>
-      <el-form :model="config" label-width="150px">
-        <el-form-item label="系统名称">
+      <el-form
+        ref="formRef"
+        :model="config"
+        :rules="rules"
+        label-width="150px"
+      >
+        <el-form-item label="系统名称" prop="systemName">
           <el-input v-model="config.systemName" />
         </el-form-item>
         <el-form-item label="系统版本">
           <el-input v-model="config.version" disabled />
         </el-form-item>
-        <el-form-item label="主题颜色">
+        <el-form-item label="主题颜色" prop="themeColor">
           <el-color-picker v-model="config.themeColor" />
         </el-form-item>
         <el-form-item label="自动刷新">
           <el-switch v-model="config.autoRefresh" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">保存配置</el-button>
-          <el-button>重置</el-button>
+          <el-button type="primary" @click="handleSubmit">保存配置</el-button>
+          <el-button @click="handleReset">重置</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -27,7 +32,11 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
+import type { FormInstance, FormRules } from 'element-plus'
+import { ElMessage } from 'element-plus'
+
+const formRef = ref<FormInstance>()
 
 const config = reactive({
   systemName: '无人机管理系统',
@@ -35,6 +44,37 @@ const config = reactive({
   themeColor: '#409eff',
   autoRefresh: true
 })
+
+const defaultConfig = {
+  systemName: '无人机管理系统',
+  version: '1.0.0',
+  themeColor: '#409eff',
+  autoRefresh: true
+}
+
+const rules: FormRules = {
+  systemName: [
+    { required: true, message: '请输入系统名称', trigger: 'blur' },
+    { min: 2, max: 30, message: '系统名称长度在2-30个字符', trigger: 'blur' }
+  ],
+  themeColor: [
+    { required: true, message: '请选择主题颜色', trigger: 'change' }
+  ]
+}
+
+const handleSubmit = async () => {
+  if (!formRef.value) return
+  const valid = await formRef.value.validate()
+  if (!valid) return
+  ElMessage.success('配置保存成功')
+}
+
+const handleReset = () => {
+  config.systemName = defaultConfig.systemName
+  config.themeColor = defaultConfig.themeColor
+  config.autoRefresh = defaultConfig.autoRefresh
+  formRef.value?.resetFields()
+}
 </script>
 
 <style lang="scss" scoped>
