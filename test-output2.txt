@@ -1,0 +1,164 @@
+﻿
+[1m[46m RUN [49m[22m [36mv3.2.2 [39m[90mD:/9999/32001/32001wurji[39m
+
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould have initial pilots data[32m 2[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould have correct computed properties[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould add a new pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould update an existing pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould remove a pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould get pilot by id[32m 0[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould return undefined for non-existent id[32m 0[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould correctly count active and inactive pilots[32m 0[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould handle pilots with licenses[32m 0[2mms[22m[39m
+npx : DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be remove
+d in Dart Sass 2.0.0.
+所在位置 行:1 字符: 5
++ & { npx vitest run tests/pilot.spec.ts tests/pilot-add.spec.ts --repo ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (DEPRECATION WAR...art Sass 2.0.0.:String) [], R 
+   emoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould render form correctly[32m 239[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have required form fields[32m 149[2mms[22m[39m
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould validate name field correctly[32m 136[2mms[22m[39m
+[31m   鈫?expected false to be true // Object.is equality[39m
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould validate name with special characters[32m 116[2mms[22m[39m
+[31m   鈫?expected false to be true // Object.is equality[39m
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould validate ID card format[32m 114[2mms[22m[39m
+[31m   鈫?expected false to be true // Object.is equality[39m
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould validate phone number format[32m 109[2mms[22m[39m
+[31m   鈫?expected false to be true // Object.is equality[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould auto-fill birth date from ID card[32m 117[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have gender selection[32m 110[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have status selection[32m 110[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have license section[32m 112[2mms[22m[39m
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have submit, reset and cancel buttons[32m 141[2mms[22m[39m
+[31m   鈫?expected false to be true // Object.is equality[39m
+
+[31m鈳幆鈳幆鈳幆鈳?[39m[1m[41m Failed Tests 5 [49m[22m[31m鈳幆鈳幆鈳幆鈳?[39m
+
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ validate name field correctly
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m鉂?[22m tests/pilot-add.spec.ts:[2m77:35[22m[39m
+    [90m 75| [39m    [35mawait[39m wrapper[33m.[39mvm[33m.[39m[34m$nextTick[39m()
+    [90m 76| [39m    [35mconst[39m errorMessage [33m=[39m wrapper[33m.[39m[34mfind[
+39m([32m'.el-form-item__error'[39m)
+    [90m 77| [39m    [34mexpect[39m(errorMessage[33m.[39m[34mexists[39m())[33m.[39m
+[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                  [31m^[39m
+    [90m 78| [39m    [34mexpect[39m(errorMessage[33m.[39m[34mtext[39m())[33m.[39m[
+34mtoContain[39m([32m'璇疯緭鍏ュ鍚?[39m)
+    [90m 79| [39m  })
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆[1/5]鈳?[22m[39m
+
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ validate name with special characters
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m鉂?[22m tests/pilot-add.spec.ts:[2m98:35[22m[39m
+    [90m 96| [39m    [35mawait[39m wrapper[33m.[39mvm[33m.[39m[34m$nextTick[39m()
+    [90m 97| [39m    [35mconst[39m errorMessage [33m=[39m wrapper[33m.[39m[34mfind[
+39m([32m'.el-form-item__error'[39m)
+    [90m 98| [39m    [34mexpect[39m(errorMessage[33m.[39m[34mexists[39m())[33m.[39m
+[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                  [31m^[39m
+    [90m 99| [39m    [34mexpect[39m(errorMessage[33m.[39m[34mtext[39m())[33m.[39m[
+34mtoContain[39m([32m'濮撳悕鍙兘鍖呭惈涓枃鎴栬嫳鏂?[39m)
+    [90m100| [39m  })
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆[2/5]鈳?[22m[39m
+
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ validate ID card format
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m鉂?[22m tests/pilot-add.spec.ts:[2m119:35[22m[39m
+    [90m117| [39m    [35mawait[39m wrapper[33m.[39mvm[33m.[39m[34m$nextTick[39m()
+    [90m118| [39m    [35mconst[39m errorMessage [33m=[39m wrapper[33m.[39m[34mfind[
+39m([32m'.el-form-item__error'[39m)
+    [90m119| [39m    [34mexpect[39m(errorMessage[33m.[39m[34mexists[39m())[33m.[39m
+[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                  [31m^[39m
+    [90m120| [39m    [34mexpect[39m(errorMessage[33m.[39m[34mtext[39m())[33m.[39m[
+34mtoContain[39m([32m'璇疯緭鍏?8浣嶈韩浠借瘉鍙?[39m)
+    [90m121| [39m  })
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆[3/5]鈳?[22m[39m
+
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ validate phone number format
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m鉂?[22m tests/pilot-add.spec.ts:[2m140:35[22m[39m
+    [90m138| [39m    [35mawait[39m wrapper[33m.[39mvm[33m.[39m[34m$nextTick[39m()
+    [90m139| [39m    [35mconst[39m errorMessage [33m=[39m wrapper[33m.[39m[34mfind[
+39m([32m'.el-form-item__error'[39m)
+    [90m140| [39m    [34mexpect[39m(errorMessage[33m.[39m[34mexists[39m())[33m.[39m
+[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                  [31m^[39m
+    [90m141| [39m    [34mexpect[39m(errorMessage[33m.[39m[34mtext[39m())[33m.[39m[
+34mtoContain[39m([32m'璇疯緭鍏ユ纭殑鎵嬫満鍙?[39m)
+    [90m142| [39m  })
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆[4/5]鈳?[22m[39m
+
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ have submit, reset and cancel buttons
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m鉂?[22m tests/pilot-add.spec.ts:[2m221:35[22m[39m
+    [90m219| [39m
+    [90m220| [39m    [35mconst[39m submitButton [33m=[39m wrapper[33m.[39m[34mfind[
+39m([32m'button[type="primary"]'[39m)
+    [90m221| [39m    [34mexpect[39m(submitButton[33m.[39m[34mexists[39m())[33m.[39m
+[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                  [31m^[39m
+    [90m222| [39m    [34mexpect[39m(submitButton[33m.[39m[34mtext[39m())[33m.[39m[
+34mtoBe[39m([32m'鎻愪氦'[39m)
+    [90m223| [39m  })
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆[5/5]鈳?[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[31m5 failed[39m[22m[2m | [22m[1m[32m15 passed[39m[22m[90m (20)[39m
+[2m   Start at [22m 21:44:13
+[2m   Duration [22m 7.51s[2m (transform 363ms, setup 0ms, collect 3.23s, tests 1.46s, environment 3.90s, prepare 583ms)[22m
+

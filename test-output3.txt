@@ -1,0 +1,38 @@
+﻿
+[1m[46m RUN [49m[22m [36mv3.2.2 [39m[90mD:/9999/32001/32001wurji[39m
+
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould have initial pilots data[32m 3[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould have correct computed properties[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould add a new pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould update an existing pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould remove a pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould get pilot by id[32m 0[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould return undefined for non-existent id[32m 0[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould correctly count active and inactive pilots[32m 0[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould handle pilots with licenses[32m 0[2mms[22m[39m
+npx : DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be remove
+d in Dart Sass 2.0.0.
+所在位置 行:1 字符: 5
++ & { npx vitest run tests/pilot.spec.ts tests/pilot-add.spec.ts --repo ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (DEPRECATION WAR...art Sass 2.0.0.:String) [], R 
+   emoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould render form correctly[33m 421[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have required form fields[32m 266[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould auto-fill birth date from ID card[32m 221[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have gender selection[32m 200[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have status selection[32m 202[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have license section[32m 206[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have submit button[32m 195[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould switch to edit mode when id is provided[33m 632[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m17 passed[39m[22m[90m (17)[39m
+[2m   Start at [22m 21:45:43
+[2m   Duration [22m 11.21s[2m (transform 689ms, setup 0ms, collect 6.33s, tests 2.36s, environment 3.38s, prepare 560ms)[22m
+

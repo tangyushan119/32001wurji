@@ -34,7 +34,7 @@
         <el-row :gutter="20">
           <el-col :span="12">
             <el-form-item label="身份证号" prop="idCard">
-              <el-input v-model="formData.idCard" placeholder="请输入18位身份证号" />
+              <el-input v-model="formData.idCard" placeholder="请输入18位身份证号" @blur="handleIdCardBlur" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -143,7 +143,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { useRouter, useRoute } from 'vue-router'
 import { usePilotStore } from '@/stores/pilot'
 import type { LicenseInfo } from '@/stores/pilot'
@@ -167,17 +167,83 @@ const formData = reactive({
   licenses: [] as LicenseInfo[]
 })
 
+const validateIdCard = (rule: any, value: string, callback: any) => {
+  if (!value) {
+    callback(new Error('请输入身份证号'))
+    return
+  }
+  
+  const idCardReg = /^\d{17}[\dXx]$/
+  if (!idCardReg.test(value)) {
+    callback(new Error('请输入18位身份证号'))
+    return
+  }
+  
+  const weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+  const checkCodes = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2']
+  
+  let sum = 0
+  for (let i = 0; i < 17; i++) {
+    sum += parseInt(value[i]) * weights[i]
+  }
+  
+  const checkCode = checkCodes[sum % 11]
+  if (value[17].toUpperCase() !== checkCode) {
+    callback(new Error('身份证号校验码错误，请检查输入'))
+    return
+  }
+  
+  const year = parseInt(value.substring(6, 10))
+  const month = parseInt(value.substring(10, 12))
+  const day = parseInt(value.substring(12, 14))
+  
+  if (year < 1900 || year > new Date().getFullYear()) {
+    callback(new Error('身份证号年份无效'))
+    return
+  }
+  
+  if (month < 1 || month > 12) {
+    callback(new Error('身份证号月份无效'))
+    return
+  }
+  
+  if (day < 1 || day > 31) {
+    callback(new Error('身份证号日期无效'))
+    return
+  }
+  
+  callback()
+}
+
+const validateName = (rule: any, value: string, callback: any) => {
+  if (!value) {
+    callback(new Error('请输入姓名'))
+    return
+  }
+  
+  if (value.length < 1 || value.length > 50) {
+    callback(new Error('姓名长度在1-50个字符'))
+    return
+  }
+  
+  const nameReg = /^[\u4e00-\u9fa5a-zA-Z]+$/
+  if (!nameReg.test(value)) {
+    callback(new Error('姓名只能包含中文或英文'))
+    return
+  }
+  
+  callback()
+}
+
 const rules: FormRules = {
   name: [
-    { required: true, message: '请输入姓名', trigger: 'blur' },
-    { min: 1, max: 50, message: '姓名长度在1-50个字符', trigger: 'blur' }
+    { validator: validateName, trigger: 'blur' }
   ],
   gender: [
     { required: true, message: '请选择性别', trigger: 'change' }
   ],
   idCard: [
-    { required: true, message: '请输入身份证号', trigger: 'blur' },
-    { pattern: /^\d{18}$/, message: '请输入18位身份证号', trigger: 'blur' }
+    { validator: validateIdCard, trigger: 'blur' }
   ],
   phone: [
     { required: true, message: '请输入手机号', trigger: 'blur' },
@@ -192,6 +258,18 @@ const rules: FormRules = {
   status: [
     { required: true, message: '请选择状态', trigger: 'change' }
   ]
+}
+
+const handleIdCardBlur = () => {
+  const idCard = formData.idCard
+  if (idCard.length === 18) {
+    const year = idCard.substring(6, 10)
+    const month = idCard.substring(10, 12)
+    const birthDate = `${year}-${month}`
+    if (!formData.birthDate) {
+      formData.birthDate = birthDate
+    }
+  }
 }
 
 const addLicense = () => {
@@ -210,27 +288,49 @@ const removeLicense = (index: number) => {
 }
 
 const handleSubmit = async () => {
-  if (!formRef.value) return
-  const valid = await formRef.value.validate()
-  if (!valid) return
+  if (!formRef.value) {
+    await ElMessageBox.alert('表单初始化失败，请刷新页面重试', '错误', {
+      type: 'error',
+      confirmButtonText: '确定'
+    })
+    return
+  }
+  
+  try {
+    await formRef.value.validate()
+  } catch (error: any) {
+    const errorMessages = error.map((e: any) => e.message).join('\\n')
+    await ElMessageBox.alert(errorMessages, '表单校验失败', {
+      type: 'error',
+      confirmButtonText: '确定'
+    })
+    return
+  }
   
   const filteredLicenses = formData.licenses.filter(l => l.name || l.no)
   
-  if (isEdit.value) {
-    pilotStore.updatePilot(editId.value, {
-      ...formData,
-      licenses: filteredLicenses
+  try {
+    if (isEdit.value) {
+      pilotStore.updatePilot(editId.value, {
+        ...formData,
+        licenses: filteredLicenses
+      })
+      ElMessage.success('飞手信息更新成功')
+    } else {
+      pilotStore.addPilot({
+        ...formData,
+        licenses: filteredLicenses
+      })
+      ElMessage.success('飞手添加成功')
+    }
+    
+    router.push('/pilot/list')
+  } catch (error: any) {
+    await ElMessageBox.alert(error.message || '操作失败，请重试', '错误', {
+      type: 'error',
+      confirmButtonText: '确定'
     })
-    ElMessage.success('飞手信息更新成功')
-  } else {
-    pilotStore.addPilot({
-      ...formData,
-      licenses: filteredLicenses
-    })
-    ElMessage.success('飞手添加成功')
   }
-  
-  router.push('/pilot/list')
 }
 
 const handleReset = () => {

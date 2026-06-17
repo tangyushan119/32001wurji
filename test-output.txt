@@ -1,0 +1,264 @@
+﻿
+[1m[46m RUN [49m[22m [36mv3.2.2 [39m[90mD:/9999/32001/32001wurji[39m
+
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould have initial pilots data[32m 4[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould have correct computed properties[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould add a new pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould update an existing pilot[32m 2[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould remove a pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould get pilot by id[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould return undefined for non-existent id[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould correctly count active and inactive pilots[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould handle pilots with licenses[32m 1[2mms[22m[39m
+npx : DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be remove
+d in Dart Sass 2.0.0.
+所在位置 行:1 字符: 5
++ & { npx vitest run --reporter=verbose 2>&1 | Out-File -FilePath "test ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (DEPRECATION WAR...art Sass 2.0.0.:String) [], R 
+   emoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in D
+art Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in D
+art Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ render form correctly
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [32m鉁?[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould render sidebar with three main categories[32m 245[2mms[22m[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ have required form fields
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould not render any icons in sidebar menu items[32m 124[2mms[22m[39m
+[31m   鈫?expected 3 to be +0 // Object.is equality[39m
+ [32m鉁?[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould render home page menu item[32m 112[2mms[22m[39m
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould render form correctly[33m 408[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+ [32m鉁?[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould have proper menu item spacing and font size[32m 109[2mms[22m[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ validate name field correctly
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould navigate to dashboard when home menu item is clicked[32m 107[2mms[22m[39m
+[31m   鈫?expected '/drone/list' to be '/dashboard' // Object.is equality[39m
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have required form fields[32m 259[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ validate name with special characters
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould validate name field correctly[32m 220[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ validate ID card format
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould validate name with special characters[32m 196[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ validate phone number format
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould validate ID card format[32m 198[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ auto-fill birth date from ID card
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould validate phone number format[32m 202[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ have gender selection
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould auto-fill birth date from ID card[32m 186[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ have status selection
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have gender selection[32m 194[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ have license section
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have status selection[32m 197[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+[90mstderr[2m | tests/pilot-add.spec.ts[2m > [22m[2mPilot Add Form[2m > [22m[2mshould
+ have submit, reset and cancel buttons
+[22m[39m[Vue warn]: injection "Symbol(router)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+[Vue warn]: injection "Symbol(route location)" not found. 
+  at <Add ref="VTU_COMPONENT" > 
+  at <VTUROOT>
+
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have license section[32m 227[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+ [31m脳[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have submit, reset and cancel buttons[32m 201[2mms[22m[39m
+[31m   鈫?Cannot read properties of undefined (reading 'query')[39m
+
+[31m鈳幆鈳幆鈳幆[39m[1m[41m Failed Tests 13 [49m[22m[31m鈳幆鈳幆鈳幆鈳?[39m
+
+[41m[1m FAIL [22m[49m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould no
+t render any icons in sidebar menu items
+[31m[1mAssertionError[22m: expected 3 to be +0 // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 0[39m
+[31m+ 3[39m
+
+[36m [2m鉂?[22m tests/layout.spec.ts:[2m111:35[22m[39m
+    [90m109| [39m    [35mconst[39m iconComponents [33m=[39m sidebar[33m.[39m[34mfind
+All[39m([32m'svg'[39m)
+    [90m110| [39m    
+    [90m111| [39m    [34mexpect[39m(iconComponents[33m.[39mlength)[33m.[39m[34mtoBe
+[39m([34m0[39m)
+    [90m   | [39m                                  [31m^[39m
+    [90m112| [39m  })
+    [90m113| [39m
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳痆1/13]鈳?[22m[39m
+
+[41m[1m FAIL [22m[49m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould na
+vigate to dashboard when home menu item is clicked
+[31m[1mAssertionError[22m: expected '/drone/list' to be '/dashboard' // Object.is equality
+[39m
+
+Expected: [32m"/d[7mashboard[27m"[39m
+Received: [31m"/d[7mrone/list[27m"[39m
+
+[36m [2m鉂?[22m tests/layout.spec.ts:[2m159:44[22m[39m
+    [90m157| [39m    [35mawait[39m homeMenuItem[33m.[39m[34mtrigger[39m([32m'click'
+[39m)
+    [90m158| [39m
+    [90m159| [39m    [34mexpect[39m(router[33m.[39mcurrentRoute[33m.[39mvalue[33m.[
+39mpath)[33m.[39m[34mtoBe[39m([32m'/dashboard'[39m)
+    [90m   | [39m                                           [31m^[39m
+    [90m160| [39m  })
+    [90m161| [39m})
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳痆2/13]鈳?[22m[39m
+
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ render form correctly
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ have required form fields
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ validate name field correctly
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ validate name with special characters
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ validate ID card format
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ validate phone number format
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ auto-fill birth date from ID card
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ have gender selection
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ have status selection
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ have license section
+[41m[1m FAIL [22m[49m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould
+ have submit, reset and cancel buttons
+[31m[1mTypeError[22m: Cannot read properties of undefined (reading 'query')[39m
+[36m [2m鉂?[22m src/views/pilot/add.vue:[2m353:20[22m[39m
+    [90m351| [39m
+    [90m352| [39monMounted(() => {
+    [90m353| [39m  const id = route.query.id as string
+    [90m   | [39m                   [31m^[39m
+    [90m354| [39m  if (id) {
+    [90m355| [39m    isEdit.value = true
+[90m [2m鉂?[22m node_modules/@vue/runtime-core/dist/runtime-core.cjs.js:[2m3086:40[22m[39
+m
+[90m [2m鉂?[22m callWithErrorHandling node_modules/@vue/runtime-core/dist/runtime-core.cjs.j
+s:[2m200:19[22m[39m
+[90m [2m鉂?[22m callWithAsyncErrorHandling node_modules/@vue/runtime-core/dist/runtime-core.
+cjs.js:[2m207:17[22m[39m
+[90m [2m鉂?[22m hook.__weh.hook.__weh node_modules/@vue/runtime-core/dist/runtime-core.cjs.j
+s:[2m3066:19[22m[39m
+[90m [2m鉂?[22m flushPostFlushCbs node_modules/@vue/runtime-core/dist/runtime-core.cjs.js:[
+2m382:28[22m[39m
+[90m [2m鉂?[22m render node_modules/@vue/runtime-core/dist/runtime-core.cjs.js:[2m6787:7[2
+2m[39m
+[90m [2m鉂?[22m mount node_modules/@vue/runtime-core/dist/runtime-core.cjs.js:[2m4233:13[2
+2m[39m
+[90m [2m鉂?[22m Object.app.mount node_modules/@vue/runtime-dom/dist/runtime-dom.cjs.js:[2m1
+854:19[22m[39m
+[90m [2m鉂?[22m Proxy.mount node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js:[2m8299
+:20[22m[39m
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳痆3/13]鈳?[22m[39m
+
+
+[2m Test Files [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[31m13 failed[39m[22m[2m | [22m[1m[32m12 passed[39m[22m[90m (25)[39m
+[2m   Start at [22m 21:38:22
+[2m   Duration [22m 11.92s[2m (transform 685ms, setup 0ms, collect 13.24s, tests 3.20s, environment 6.18s, prepare 914ms)[22m
+

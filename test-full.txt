@@ -1,0 +1,100 @@
+﻿
+[1m[46m RUN [49m[22m [36mv3.2.2 [39m[90mD:/9999/32001/32001wurji[39m
+
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould have initial pilots data[32m 4[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould have correct computed properties[32m 2[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould add a new pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould update an existing pilot[32m 2[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould remove a pilot[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould get pilot by id[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould return undefined for non-existent id[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould correctly count active and inactive pilots[32m 1[2mms[22m[39m
+ [32m鉁?[39m tests/pilot.spec.ts[2m > [22mPilot Store[2m > [22mshould handle pilots with licenses[32m 1[2mms[22m[39m
+npx : DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be remove
+d in Dart Sass 2.0.0.
+所在位置 行:1 字符: 5
++ & { npx vitest run --reporter=verbose 2>&1 | Out-File -FilePath "test ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (DEPRECATION WAR...art Sass 2.0.0.:String) [], R 
+   emoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in D
+art Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in D
+art Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+ [32m鉁?[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould render sidebar with three main categories[32m 254[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould render form correctly[33m 412[2mms[22m[39m
+ [31m脳[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould not render any icons in sidebar menu items[32m 122[2mms[22m[39m
+[31m   鈫?expected 3 to be +0 // Object.is equality[39m
+ [32m鉁?[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould render home page menu item[32m 121[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have required form fields[32m 260[2mms[22m[39m
+ [32m鉁?[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould have proper menu item spacing and font size[32m 98[2mms[22m[39m
+ [31m脳[39m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould navigate to dashboard when home menu item is clicked[32m 101[2mms[22m[39m
+[31m   鈫?expected '/drone/list' to be '/dashboard' // Object.is equality[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould auto-fill birth date from ID card[32m 230[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have gender selection[32m 213[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have status selection[32m 202[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have license section[32m 192[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould have submit button[32m 187[2mms[22m[39m
+ [32m鉁?[39m tests/pilot-add.spec.ts[2m > [22mPilot Add Form[2m > [22mshould switch to edit mode when id is provided[33m 620[2mms[22m[39m
+
+[31m鈳幆鈳幆鈳幆鈳?[39m[1m[41m Failed Tests 2 [49m[22m[31m鈳幆鈳幆鈳幆鈳?[39m
+
+[41m[1m FAIL [22m[49m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould no
+t render any icons in sidebar menu items
+[31m[1mAssertionError[22m: expected 3 to be +0 // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 0[39m
+[31m+ 3[39m
+
+[36m [2m鉂?[22m tests/layout.spec.ts:[2m111:35[22m[39m
+    [90m109| [39m    [35mconst[39m iconComponents [33m=[39m sidebar[33m.[39m[34mfind
+All[39m([32m'svg'[39m)
+    [90m110| [39m    
+    [90m111| [39m    [34mexpect[39m(iconComponents[33m.[39mlength)[33m.[39m[34mtoBe
+[39m([34m0[39m)
+    [90m   | [39m                                  [31m^[39m
+    [90m112| [39m  })
+    [90m113| [39m
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆[1/2]鈳?[22m[39m
+
+[41m[1m FAIL [22m[49m tests/layout.spec.ts[2m > [22mLayout Sidebar[2m > [22mshould na
+vigate to dashboard when home menu item is clicked
+[31m[1mAssertionError[22m: expected '/drone/list' to be '/dashboard' // Object.is equality
+[39m
+
+Expected: [32m"/d[7mashboard[27m"[39m
+Received: [31m"/d[7mrone/list[27m"[39m
+
+[36m [2m鉂?[22m tests/layout.spec.ts:[2m159:44[22m[39m
+
+    [90m157| [39m    [35mawait[39m homeMenuItem[33m.[39m[34mtrigger[39m([32m'click'
+[39m)
+    [90m158| [39m
+    [90m159| [39m    [34mexpect[39m(router[33m.[39mcurrentRoute[33m.[39mvalue[33m.[
+39mpath)[33m.[39m[34mtoBe[39m([32m'/dashboard'[39m)
+    [90m   | [39m                                           [31m^[39m
+    [90m160| [39m  })
+    [90m161| [39m})
+
+[31m[2m鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆鈳幆[2/2]鈳?[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m2 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m20 passed[39m[22m[90m (22)[39m
+[2m   Start at [22m 21:46:09
+[2m   Duration [22m 12.10s[2m (transform 700ms, setup 0ms, collect 13.39s, tests 3.03s, environment 6.58s, prepare 952ms)[22m
+
