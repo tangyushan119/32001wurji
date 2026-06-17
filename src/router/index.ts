@@ -25,33 +25,53 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: 'device/list',
-        name: 'DeviceList',
+        path: 'drone/list',
+        name: 'DroneList',
         component: () => import('@/views/device/list.vue'),
         meta: {
           title: '设备列表',
-          topMenuKey: 'device',
+          topMenuKey: 'drone',
           icon: 'Monitor'
         }
       },
       {
-        path: 'device/detail',
-        name: 'DeviceDetail',
+        path: 'drone/detail',
+        name: 'DroneDetail',
         component: () => import('@/views/device/detail.vue'),
         meta: {
           title: '设备详情',
-          topMenuKey: 'device',
+          topMenuKey: 'drone',
           icon: 'Monitor'
         }
       },
       {
-        path: 'device/add',
-        name: 'DeviceAdd',
+        path: 'drone/add',
+        name: 'DroneAdd',
         component: () => import('@/views/device/add.vue'),
         meta: {
           title: '添加设备',
-          topMenuKey: 'device',
+          topMenuKey: 'drone',
           icon: 'Plus'
+        }
+      },
+      {
+        path: 'drone/report',
+        name: 'DroneReport',
+        component: () => import('@/views/analytics/report.vue'),
+        meta: {
+          title: '数据报表',
+          topMenuKey: 'drone',
+          icon: 'Document'
+        }
+      },
+      {
+        path: 'drone/chart',
+        name: 'DroneChart',
+        component: () => import('@/views/analytics/chart.vue'),
+        meta: {
+          title: '数据图表',
+          topMenuKey: 'drone',
+          icon: 'TrendCharts'
         }
       },
       {
@@ -85,52 +105,32 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: 'analytics/report',
-        name: 'AnalyticsReport',
-        component: () => import('@/views/analytics/report.vue'),
-        meta: {
-          title: '数据报表',
-          topMenuKey: 'analytics',
-          icon: 'Document'
-        }
-      },
-      {
-        path: 'analytics/chart',
-        name: 'AnalyticsChart',
-        component: () => import('@/views/analytics/chart.vue'),
-        meta: {
-          title: '数据图表',
-          topMenuKey: 'analytics',
-          icon: 'TrendCharts'
-        }
-      },
-      {
-        path: 'system/user',
-        name: 'SystemUser',
+        path: 'personnel/user',
+        name: 'PersonnelUser',
         component: () => import('@/views/system/user.vue'),
         meta: {
           title: '用户管理',
-          topMenuKey: 'system',
+          topMenuKey: 'personnel',
           icon: 'User'
         }
       },
       {
-        path: 'system/role',
-        name: 'SystemRole',
+        path: 'personnel/role',
+        name: 'PersonnelRole',
         component: () => import('@/views/system/role.vue'),
         meta: {
           title: '角色管理',
-          topMenuKey: 'system',
+          topMenuKey: 'personnel',
           icon: 'UserFilled'
         }
       },
       {
-        path: 'system/config',
-        name: 'SystemConfig',
+        path: 'personnel/config',
+        name: 'PersonnelConfig',
         component: () => import('@/views/system/config.vue'),
         meta: {
           title: '系统配置',
-          topMenuKey: 'system',
+          topMenuKey: 'personnel',
           icon: 'Setting'
         }
       }

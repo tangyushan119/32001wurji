@@ -7,21 +7,6 @@
         </span>
         <span class="logo-text">无人机管理系统</span>
       </div>
-      <div class="top-menu">
-        <el-menu
-          :active-index="activeTopMenu"
-          mode="horizontal"
-          background-color="#fff"
-          text-color="#666"
-          active-text-color="#409eff"
-          @select="handleTopMenuSelect"
-        >
-          <el-menu-item v-for="item in topMenuList" :key="item.key" :index="item.key">
-            <component :is="item.icon" />
-            <span>{{ item.label }}</span>
-          </el-menu-item>
-        </el-menu>
-      </div>
       <div class="header-right">
         <el-dropdown trigger="click">
           <span class="user-info">
@@ -48,9 +33,20 @@
             active-text-color="#409eff"
             @select="handleSidebarSelect"
           >
-            <el-menu-item v-for="item in currentSecondMenu" :key="item.path" :index="item.path">
-              <span>{{ item.title }}</span>
+            <el-menu-item key="/dashboard" index="/dashboard">
+              <component :is="HomeFilled" />
+              <span>首页</span>
             </el-menu-item>
+            <el-sub-menu v-for="category in menuCategories" :key="category.key" :index="category.key">
+              <template #title>
+                <component :is="category.icon" />
+                <span>{{ category.label }}</span>
+              </template>
+              <el-menu-item v-for="item in getCategoryMenuItems(category.key)" :key="item.path" :index="item.path">
+                <component :is="item.icon" />
+                <span>{{ item.title }}</span>
+              </el-menu-item>
+            </el-sub-menu>
           </el-menu>
         </div>
       </aside>
@@ -62,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   Place, User, ArrowDown, HomeFilled, Monitor, Plus, List, Edit,
@@ -89,48 +85,28 @@ const iconMap: Record<string, any> = {
   Setting
 }
 
-const topMenuList = [
-  { key: 'dashboard', label: '首页', icon: HomeFilled },
-  { key: 'device', label: '设备管理', icon: Monitor },
-  { key: 'task', label: '任务管理', icon: List },
-  { key: 'analytics', label: '数据分析', icon: TrendCharts },
-  { key: 'system', label: '系统管理', icon: Setting }
+const menuCategories = [
+  { key: 'drone', label: '无人机管理', icon: Monitor },
+  { key: 'task', label: '任务分派', icon: List },
+  { key: 'personnel', label: '人员管理', icon: UserFilled }
 ]
-
-const activeTopMenu = ref('dashboard')
 
 const activeMenu = computed(() => route.path)
 
-const currentSecondMenu = computed(() => {
+const getCategoryMenuItems = (categoryKey: string) => {
   const layoutRoute = route.matched.find(r => r.name === 'Layout')
   if (!layoutRoute?.children) return []
   
   return layoutRoute.children
     .filter(child => {
       const topMenuKey = (child.meta as any)?.topMenuKey
-      return topMenuKey === activeTopMenu.value
+      return topMenuKey === categoryKey
     })
     .map(child => ({
       path: '/' + child.path,
       title: (child.meta as any)?.title || '',
       icon: iconMap[(child.meta as any)?.icon] || List
     }))
-})
-
-const handleTopMenuSelect = (key: string) => {
-  activeTopMenu.value = key
-  
-  const layoutRoute = route.matched.find(r => r.name === 'Layout')
-  if (!layoutRoute?.children) return
-  
-  const defaultChild = layoutRoute.children.find(child => {
-    const topMenuKey = (child.meta as any)?.topMenuKey
-    return topMenuKey === key
-  })
-  
-  if (defaultChild) {
-    router.push('/' + defaultChild.path)
-  }
 }
 
 const handleSidebarSelect = (index: string) => {
@@ -143,12 +119,7 @@ const handleLogout = () => {
   router.push('/login')
 }
 
-watch(() => route.path, () => {
-  const meta = (route.meta as any)
-  if (meta?.topMenuKey) {
-    activeTopMenu.value = meta.topMenuKey
-  }
-}, { immediate: true })
+watch(() => route.path, () => {}, { immediate: true })
 </script>
 
 <style lang="scss" scoped>
@@ -186,12 +157,6 @@ watch(() => route.path, () => {
   font-size: 16px;
   font-weight: bold;
   color: #333;
-}
-
-.top-menu {
-  flex: 1;
-  display: flex;
-  align-items: center;
 }
 
 .header-right {
@@ -234,14 +199,17 @@ watch(() => route.path, () => {
 }
 
 .sidebar-menu :deep(.el-menu-item) {
-  --el-menu-icon-width: 0;
   height: 56px;
   line-height: 56px;
-  padding-left: 32px;
+  padding-left: 20px;
 }
 
 .sidebar-menu :deep(.el-menu-item span) {
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.sidebar-menu :deep(.el-sub-menu .el-menu-item) {
+  padding-left: 50px;
 }
 
 .content {
