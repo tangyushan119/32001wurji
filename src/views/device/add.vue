@@ -82,7 +82,7 @@ const handleSubmit = async () => {
   })
   
   ElMessage.success('设备添加成功，已自动同步到列表')
-  handleReset()
+  router.push('/drone/list')
 }
 
 const handleReset = () => {

@@ -92,6 +92,16 @@ const handleDelete = async (id: string) => {
 }
 
 const handleExport = () => {
+  const data = deviceStore.devices.map(device => ({
+    ...device,
+    lastUpdate: device.lastUpdate ?? ''
+  }))
+
+  if (data.length === 0) {
+    ElMessage.warning('暂无数据可导出')
+    return
+  }
+
   const columns: ExportColumn<Device>[] = [
     { key: 'deviceNo', label: '设备编号' },
     { key: 'name', label: '设备名称' },
@@ -102,14 +112,9 @@ const handleExport = () => {
     { key: 'lastUpdate', label: '最后更新' }
   ]
 
-  const data = deviceStore.devices.map(device => ({
-    ...device,
-    lastUpdate: device.lastUpdate ?? ''
-  }))
-
   const fileName = `无人机档案_${new Date().toISOString().split('T')[0]}.xlsx`
   exportToExcelWithFormat(data, columns, '无人机档案', fileName)
-  ElMessage.success('导出成功')
+  ElMessage.success(`成功导出 ${data.length} 条设备数据`)
 }
 </script>
 
