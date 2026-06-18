@@ -167,7 +167,7 @@ const formData = reactive({
   licenses: [] as LicenseInfo[]
 })
 
-const validateIdCard = (rule: any, value: string, callback: any) => {
+const validateIdCard = (_: any, value: string, callback: any) => {
   if (!value) {
     callback(new Error('请输入身份证号'))
     return
@@ -215,7 +215,7 @@ const validateIdCard = (rule: any, value: string, callback: any) => {
   callback()
 }
 
-const validateName = (rule: any, value: string, callback: any) => {
+const validateName = (_: any, value: string, callback: any) => {
   if (!value) {
     callback(new Error('请输入姓名'))
     return

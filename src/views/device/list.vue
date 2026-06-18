@@ -4,10 +4,16 @@
       <template #header>
         <div class="card-header">
           <span>设备列表</span>
-          <el-button type="primary" @click="handleAdd">
-            <component :is="Plus" />
-            添加设备
-          </el-button>
+          <div class="header-actions">
+            <el-button type="success" @click="handleExport">
+              <component :is="Download" />
+              导出Excel
+            </el-button>
+            <el-button type="primary" @click="handleAdd">
+              <component :is="Plus" />
+              添加设备
+            </el-button>
+          </div>
         </div>
       </template>
       <div class="stats-bar">
@@ -50,10 +56,11 @@
 </template>
 
 <script setup lang="ts">
-import { Plus } from '@element-plus/icons-vue'
+import { Plus, Download } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
-import { useDeviceStore } from '@/stores/device'
+import { useDeviceStore, type Device } from '@/stores/device'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import { exportToExcelWithFormat, type ExportColumn } from '@/utils/excel'
 
 const router = useRouter()
 const deviceStore = useDeviceStore()
@@ -83,6 +90,27 @@ const handleDelete = async (id: string) => {
     ElMessage.info('已取消删除')
   }
 }
+
+const handleExport = () => {
+  const columns: ExportColumn<Device>[] = [
+    { key: 'deviceNo', label: '设备编号' },
+    { key: 'name', label: '设备名称' },
+    { key: 'type', label: '设备类型' },
+    { key: 'status', label: '状态' },
+    { key: 'location', label: '位置' },
+    { key: 'createTime', label: '创建时间' },
+    { key: 'lastUpdate', label: '最后更新' }
+  ]
+
+  const data = deviceStore.devices.map(device => ({
+    ...device,
+    lastUpdate: device.lastUpdate ?? ''
+  }))
+
+  const fileName = `无人机档案_${new Date().toISOString().split('T')[0]}.xlsx`
+  exportToExcelWithFormat(data, columns, '无人机档案', fileName)
+  ElMessage.success('导出成功')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -94,6 +122,11 @@ const handleDelete = async (id: string) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
 }
 
 .stats-bar {
