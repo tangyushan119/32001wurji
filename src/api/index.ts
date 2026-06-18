@@ -13,6 +13,7 @@ export const logout = () => {
 }
 
 export const registerFlightTask = (data: {
+  device: string
   flightTime: Date | null
   flightArea: string
   workContent: string

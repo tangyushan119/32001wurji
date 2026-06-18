@@ -10,6 +10,11 @@
         :rules="rules"
         label-width="120px"
       >
+        <el-form-item label="关联设备" prop="device">
+          <el-select v-model="formData.device" placeholder="请选择设备">
+            <el-option v-for="device in deviceStore.devices" :key="device.id" :label="device.name" :value="device.id" />
+          </el-select>
+        </el-form-item>
         <el-form-item label="飞行时间" prop="flightTime">
           <el-date-picker
             v-model="formData.flightTime"
@@ -46,16 +51,22 @@ import { ref, reactive } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import { registerFlightTask } from '@/api'
+import { useDeviceStore } from '@/stores/device'
 
+const deviceStore = useDeviceStore()
 const formRef = ref<FormInstance>()
 
 const formData = reactive({
+  device: '',
   flightTime: null as Date | null,
   flightArea: '',
   workContent: ''
 })
 
 const rules: FormRules = {
+  device: [
+    { required: true, message: '请选择关联设备', trigger: 'change' }
+  ],
   flightTime: [
     { required: true, message: '请选择飞行时间', trigger: 'change' },
     {
@@ -86,6 +97,7 @@ const handleSubmit = async () => {
 
   try {
     await registerFlightTask({
+      device: formData.device,
       flightTime: formData.flightTime,
       flightArea: formData.flightArea,
       workContent: formData.workContent
@@ -98,6 +110,7 @@ const handleSubmit = async () => {
 }
 
 const handleReset = () => {
+  formData.device = ''
   formData.flightTime = null
   formData.flightArea = ''
   formData.workContent = ''

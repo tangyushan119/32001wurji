@@ -15,9 +15,7 @@
         </el-form-item>
         <el-form-item label="关联设备" prop="device">
           <el-select v-model="formData.device" placeholder="请选择设备">
-            <el-option label="无人机-001" value="无人机-001" />
-            <el-option label="无人机-002" value="无人机-002" />
-            <el-option label="无人机-003" value="无人机-003" />
+            <el-option v-for="device in deviceStore.devices" :key="device.id" :label="device.name" :value="device.id" />
           </el-select>
         </el-form-item>
         <el-form-item label="任务类型" prop="type">
@@ -43,7 +41,9 @@
 import { ref, reactive } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
+import { useDeviceStore } from '@/stores/device'
 
+const deviceStore = useDeviceStore()
 const formRef = ref<FormInstance>()
 
 const formData = reactive({
