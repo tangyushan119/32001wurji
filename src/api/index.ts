@@ -11,3 +11,11 @@ export const getUserInfo = () => {
 export const logout = () => {
   return request.post('/api/logout')
 }
+
+export const registerFlightTask = (data: {
+  flightTime: Date | null
+  flightArea: string
+  workContent: string
+}) => {
+  return request.post('/api/task/register', data)
+}

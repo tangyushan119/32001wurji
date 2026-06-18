@@ -95,6 +95,16 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'task/register',
+        name: 'TaskRegister',
+        component: () => import('@/views/task/register.vue'),
+        meta: {
+          title: '飞行任务登记',
+          topMenuKey: 'task',
+          icon: 'Plane'
+        }
+      },
+      {
         path: 'task/history',
         name: 'TaskHistory',
         component: () => import('@/views/task/history.vue'),
