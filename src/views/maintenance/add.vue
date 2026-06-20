@@ -100,7 +100,18 @@ const devices = deviceStore.devices
 const isEdit = ref(false)
 const editId = ref('')
 
-const form = reactive({
+const form = ref<{
+  deviceId: string
+  deviceName: string
+  deviceNo: string
+  maintenanceType: string
+  maintenanceDate: string
+  maintenanceContent: string
+  maintenancePerson: string
+  maintenanceResult: string
+  nextMaintenanceDate: string
+  status: string
+}>({
   deviceId: '',
   deviceName: '',
   deviceNo: '',
@@ -125,8 +136,8 @@ const rules = {
 const handleDeviceChange = (deviceId: string) => {
   const device = deviceStore.getDeviceById(deviceId)
   if (device) {
-    form.deviceName = device.name
-    form.deviceNo = device.deviceNo || ''
+    form.value.deviceName = device.name
+    form.value.deviceNo = device.deviceNo || ''
   }
 }
 
@@ -138,30 +149,30 @@ const handleSubmit = async () => {
     
     if (isEdit.value) {
       maintenanceStore.updateMaintenance(editId.value, {
-        deviceId: form.deviceId,
-        deviceName: form.deviceName,
-        deviceNo: form.deviceNo,
-        maintenanceType: form.maintenanceType,
-        maintenanceDate: form.maintenanceDate,
-        maintenanceContent: form.maintenanceContent,
-        maintenancePerson: form.maintenancePerson,
-        maintenanceResult: form.maintenanceResult,
-        nextMaintenanceDate: form.nextMaintenanceDate,
-        status: form.status
+        deviceId: form.value.deviceId,
+        deviceName: form.value.deviceName,
+        deviceNo: form.value.deviceNo,
+        maintenanceType: form.value.maintenanceType,
+        maintenanceDate: form.value.maintenanceDate,
+        maintenanceContent: form.value.maintenanceContent,
+        maintenancePerson: form.value.maintenancePerson,
+        maintenanceResult: form.value.maintenanceResult,
+        nextMaintenanceDate: form.value.nextMaintenanceDate,
+        status: form.value.status
       })
       ElMessage.success('修改成功')
     } else {
       maintenanceStore.addMaintenance({
-        deviceId: form.deviceId,
-        deviceName: form.deviceName,
-        deviceNo: form.deviceNo,
-        maintenanceType: form.maintenanceType,
-        maintenanceDate: form.maintenanceDate,
-        maintenanceContent: form.maintenanceContent,
-        maintenancePerson: form.maintenancePerson,
-        maintenanceResult: form.maintenanceResult,
-        nextMaintenanceDate: form.nextMaintenanceDate,
-        status: form.status
+        deviceId: form.value.deviceId,
+        deviceName: form.value.deviceName,
+        deviceNo: form.value.deviceNo,
+        maintenanceType: form.value.maintenanceType,
+        maintenanceDate: form.value.maintenanceDate,
+        maintenanceContent: form.value.maintenanceContent,
+        maintenancePerson: form.value.maintenancePerson,
+        maintenanceResult: form.value.maintenanceResult,
+        nextMaintenanceDate: form.value.nextMaintenanceDate,
+        status: form.value.status
       })
       ElMessage.success('新增成功')
     }
@@ -173,10 +184,19 @@ const handleSubmit = async () => {
 }
 
 const handleReset = () => {
-  if (!formRef.value) return
-  formRef.value.resetFields()
-  form.deviceName = ''
-  form.deviceNo = ''
+  if (formRef.value) {
+    formRef.value.resetFields()
+  }
+  form.value.deviceId = ''
+  form.value.deviceName = ''
+  form.value.deviceNo = ''
+  form.value.maintenanceType = ''
+  form.value.maintenanceDate = ''
+  form.value.maintenanceContent = ''
+  form.value.maintenancePerson = ''
+  form.value.maintenanceResult = ''
+  form.value.nextMaintenanceDate = ''
+  form.value.status = ''
 }
 
 const handleBack = () => {
@@ -190,16 +210,16 @@ onMounted(() => {
     editId.value = id
     const maintenance = maintenanceStore.getMaintenanceById(id)
     if (maintenance) {
-      form.deviceId = maintenance.deviceId
-      form.deviceName = maintenance.deviceName
-      form.deviceNo = maintenance.deviceNo
-      form.maintenanceType = maintenance.maintenanceType
-      form.maintenanceDate = maintenance.maintenanceDate
-      form.maintenanceContent = maintenance.maintenanceContent
-      form.maintenancePerson = maintenance.maintenancePerson
-      form.maintenanceResult = maintenance.maintenanceResult
-      form.nextMaintenanceDate = maintenance.nextMaintenanceDate
-      form.status = maintenance.status
+      form.value.deviceId = maintenance.deviceId || ''
+      form.value.deviceName = maintenance.deviceName || ''
+      form.value.deviceNo = maintenance.deviceNo || ''
+      form.value.maintenanceType = maintenance.maintenanceType || ''
+      form.value.maintenanceDate = maintenance.maintenanceDate || ''
+      form.value.maintenanceContent = maintenance.maintenanceContent || ''
+      form.value.maintenancePerson = maintenance.maintenancePerson || ''
+      form.value.maintenanceResult = maintenance.maintenanceResult || ''
+      form.value.nextMaintenanceDate = maintenance.nextMaintenanceDate || ''
+      form.value.status = maintenance.status || ''
     }
   }
 })
