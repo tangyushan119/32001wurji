@@ -68,7 +68,11 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="maintenanceDate" label="维保日期" />
+        <el-table-column prop="maintenanceDate" label="维保日期">
+          <template #default="{ row }">
+            {{ date.format(row.maintenanceDate, 'yyyy-MM-dd') }}
+          </template>
+        </el-table-column>
         <el-table-column prop="maintenancePerson" label="维保人员" />
         <el-table-column prop="maintenanceContent" label="维保内容" show-overflow-tooltip />
         <el-table-column prop="status" label="状态">
@@ -78,7 +82,11 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="nextMaintenanceDate" label="下次维保" />
+        <el-table-column prop="nextMaintenanceDate" label="下次维保">
+          <template #default="{ row }">
+            {{ date.format(row.nextMaintenanceDate, 'yyyy-MM-dd') }}
+          </template>
+        </el-table-column>
         <el-table-column label="操作" width="280">
           <template #default="{ row }">
             <el-button size="small" @click="handleEdit(row.id)">编辑</el-button>
@@ -98,6 +106,7 @@ import { useRouter } from 'vue-router'
 import { useMaintenanceStore, type Maintenance } from '@/stores/maintenance'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { exportToExcelWithFormat, type ExportColumn } from '@/utils/excel'
+import { date } from '@/utils/date'
 
 const router = useRouter()
 const maintenanceStore = useMaintenanceStore()
