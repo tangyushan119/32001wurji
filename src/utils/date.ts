@@ -1,8 +1,13 @@
+const EMPTY_PLACEHOLDER = '-'
+
 const date = {
-  format: (date: Date | string, fmt: string = 'yyyy-MM-dd HH:mm:ss'): string => {
+  format: (date: Date | string | null | undefined, fmt: string = 'yyyy-MM-dd HH:mm:ss', placeholder: string = EMPTY_PLACEHOLDER): string => {
+    if (!date || date === '') {
+      return placeholder
+    }
     const d = typeof date === 'string' ? new Date(date) : date
-    if (!d || isNaN(d.getTime())) {
-      return ''
+    if (isNaN(d.getTime())) {
+      return placeholder
     }
     const year = d.getFullYear()
     const month = String(d.getMonth() + 1).padStart(2, '0')

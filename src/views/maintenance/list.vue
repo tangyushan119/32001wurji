@@ -70,7 +70,7 @@
         </el-table-column>
         <el-table-column prop="maintenanceDate" label="维保日期">
           <template #default="{ row }">
-            {{ date.format(row.maintenanceDate, 'yyyy-MM-dd') }}
+            {{ date.format(row.maintenanceDate || '-', 'yyyy-MM-dd') }}
           </template>
         </el-table-column>
         <el-table-column prop="maintenancePerson" label="维保人员" />
@@ -84,7 +84,7 @@
         </el-table-column>
         <el-table-column prop="nextMaintenanceDate" label="下次维保">
           <template #default="{ row }">
-            {{ date.format(row.nextMaintenanceDate, 'yyyy-MM-dd') }}
+            {{ date.format(row.nextMaintenanceDate || '-', 'yyyy-MM-dd') }}
           </template>
         </el-table-column>
         <el-table-column label="操作" width="280">

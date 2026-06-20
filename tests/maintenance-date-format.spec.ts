@@ -50,9 +50,40 @@ describe('维保日期格式化测试', () => {
       expect(result).toBe('2024-07-01')
     })
 
-    it('应处理无效日期返回空字符串', () => {
+    it('应处理 null 值返回默认占位符', () => {
+      const result = date.format(null, 'yyyy-MM-dd')
+      expect(result).toBe('-')
+    })
+
+    it('应处理 undefined 值返回默认占位符', () => {
+      const result = date.format(undefined, 'yyyy-MM-dd')
+      expect(result).toBe('-')
+    })
+
+    it('应处理空字符串返回默认占位符', () => {
+      const result = date.format('', 'yyyy-MM-dd')
+      expect(result).toBe('-')
+    })
+
+    it('应处理无效日期字符串返回默认占位符', () => {
       const result = date.format('invalid-date', 'yyyy-MM-dd')
-      expect(result).toBe('')
+      expect(result).toBe('-')
+    })
+
+    it('应处理 NaN 日期返回默认占位符', () => {
+      const invalidDate = new Date('invalid')
+      const result = date.format(invalidDate, 'yyyy-MM-dd')
+      expect(result).toBe('-')
+    })
+
+    it('应支持自定义占位符', () => {
+      const result = date.format(null, 'yyyy-MM-dd', '暂无')
+      expect(result).toBe('暂无')
+    })
+
+    it('应支持自定义占位符处理空字符串', () => {
+      const result = date.format('', 'yyyy-MM-dd', '--')
+      expect(result).toBe('--')
     })
   })
 
@@ -124,6 +155,22 @@ describe('维保日期格式化测试', () => {
         expect(record.updateTime).toMatch(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/)
       })
     })
+
+    it('格式化空日期应返回占位符', () => {
+      const store = useMaintenanceStore()
+      const record = { ...store.activeMaintenances[0], maintenanceDate: '' }
+      
+      const formatted = date.format(record.maintenanceDate, 'yyyy-MM-dd')
+      expect(formatted).toBe('-')
+    })
+
+    it('格式化下次维保空日期应返回占位符', () => {
+      const store = useMaintenanceStore()
+      const record = { ...store.activeMaintenances[0], nextMaintenanceDate: '' }
+      
+      const formatted = date.format(record.nextMaintenanceDate, 'yyyy-MM-dd')
+      expect(formatted).toBe('-')
+    })
   })
 
   describe('date.parse 函数测试', () => {
@@ -145,6 +192,11 @@ describe('维保日期格式化测试', () => {
 
     it('应在解析失败时返回 null', () => {
       const result = date.parse('invalid-date')
+      expect(result).toBeNull()
+    })
+
+    it('应在解析空字符串时返回 null', () => {
+      const result = date.parse('')
       expect(result).toBeNull()
     })
   })
