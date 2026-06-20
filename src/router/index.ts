@@ -75,6 +75,26 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'maintenance/list',
+        name: 'MaintenanceList',
+        component: () => import('@/views/maintenance/list.vue'),
+        meta: {
+          title: '维保记录',
+          topMenuKey: 'drone',
+          icon: 'Wrench'
+        }
+      },
+      {
+        path: 'maintenance/add',
+        name: 'MaintenanceAdd',
+        component: () => import('@/views/maintenance/add.vue'),
+        meta: {
+          title: '新增/编辑维保',
+          topMenuKey: 'drone',
+          icon: 'Plus'
+        }
+      },
+      {
         path: 'task/list',
         name: 'TaskList',
         component: () => import('@/views/task/list.vue'),
