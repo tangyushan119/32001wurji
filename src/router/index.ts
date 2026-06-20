@@ -80,7 +80,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/maintenance/list.vue'),
         meta: {
           title: '维保记录',
-          topMenuKey: 'drone',
+          topMenuKey: 'maintenance',
           icon: 'Wrench'
         }
       },
@@ -90,7 +90,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/maintenance/add.vue'),
         meta: {
           title: '新增/编辑维保',
-          topMenuKey: 'drone',
+          topMenuKey: 'maintenance',
           icon: 'Plus'
         }
       },

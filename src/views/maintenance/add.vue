@@ -33,7 +33,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="维保日期" prop="maintenanceDate">
-              <el-date-picker v-model="form.maintenanceDate" type="date" placeholder="请选择日期" />
+              <el-date-picker v-model="form.maintenanceDate" type="date" value-format="yyyy-MM-dd" placeholder="请选择日期" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -56,7 +56,7 @@
         <el-row :gutter="20">
           <el-col :span="12">
             <el-form-item label="下次维保日期" prop="nextMaintenanceDate">
-              <el-date-picker v-model="form.nextMaintenanceDate" type="date" placeholder="请选择日期" />
+              <el-date-picker v-model="form.nextMaintenanceDate" type="date" value-format="yyyy-MM-dd" placeholder="请选择日期" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -87,6 +87,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useMaintenanceStore } from '@/stores/maintenance'
 import { useDeviceStore } from '@/stores/device'
 import { ElMessage } from 'element-plus'
+import { date } from '@/utils/date'
 
 const route = useRoute()
 const router = useRouter()

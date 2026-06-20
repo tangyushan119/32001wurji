@@ -1,5 +1,6 @@
 ﻿import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { date } from '@/utils/date'
 
 export interface Maintenance {
   id: string
@@ -34,8 +35,8 @@ export const useMaintenanceStore = defineStore('maintenance', () => {
     const newMaintenance: Maintenance = {
       ...maintenance,
       id: String(Date.now()),
-      createTime: new Date().toISOString().replace('T', ' ').slice(0, 19),
-      updateTime: new Date().toISOString().replace('T', ' ').slice(0, 19),
+      createTime: date.now(),
+      updateTime: date.now(),
       archived: false
     }
     maintenances.value.unshift(newMaintenance)
@@ -47,7 +48,7 @@ export const useMaintenanceStore = defineStore('maintenance', () => {
       maintenances.value[index] = {
         ...maintenances.value[index],
         ...maintenance,
-        updateTime: new Date().toISOString().replace('T', ' ').slice(0, 19)
+        updateTime: date.now()
       }
     }
   }

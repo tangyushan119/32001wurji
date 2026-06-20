@@ -67,6 +67,7 @@ const userStore = useUserStore()
 
 const menuCategories = [
   { key: 'drone', label: '无人机管理' },
+  { key: 'maintenance', label: '维保管理' },
   { key: 'task', label: '任务分派' },
   { key: 'personnel', label: '人员管理' }
 ]
